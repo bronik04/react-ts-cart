@@ -42,11 +42,22 @@ const reducer = (state: CartStateType, action: ReducerAction): CartStateType => 
             if (!action.payload) {
                 throw new Error('action.payload missing in REMOVE action')
             }
+            const {sku} = action.payload;
+            const filteredCart: CartItemType[] = state.cart.filter(item => item.sku !== sku);
+            return {...state, cart: [...filteredCart]}
         }
         case REDUCER_ACTION_TYPE.QUANTITY: {
             if (!action.payload) {
                 throw new Error('action.payload missing in QUANTITY action')
             }
+            const {sku, qty} = action.payload;
+            const itemExists: CartItemType | undefined = state.cart.find(item => item.sku === sku);
+            if (!itemExists) {
+                throw new Error('Item must exist in order to update quantity')
+            }
+            const updatedItem: CartItemType = {...itemExists, qty}
+            const filteredCart: CartItemType[] = state.cart.filter(item => item.sku !== sku);
+            return {...state, cart: [...filteredCart, updatedItem]}
         }
         case REDUCER_ACTION_TYPE.SUBMIT: {
             return {...state, cart: []}
@@ -56,3 +67,5 @@ const reducer = (state: CartStateType, action: ReducerAction): CartStateType => 
 
     }
 }
+
+
