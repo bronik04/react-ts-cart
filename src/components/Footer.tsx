@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Footer = () => {
+const Footer = ({viewCart}: {viewCart: boolean}) => {
     return (
         <div>
            Footer
