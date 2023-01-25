@@ -26,9 +26,9 @@ const ProductList = () => {
     }
 
     return (
-        <main className={'main main--products'}>
-            {pageContent}
-        </main>
+            <main className={'main main--products'}>
+                {pageContent}
+            </main>
     );
 };
 
