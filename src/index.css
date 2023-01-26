@@ -44,19 +44,18 @@ img {
 
 .main {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   place-items: center;
-  /*height: 85vh;*/
   gap: 1rem;
 }
 
 .main--products {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   flex-flow: row wrap;
   justify-content: space-between;
 }
 
 .main--cart {
-  flex-flow: column nowrap;
+
 }
 
 .header {
